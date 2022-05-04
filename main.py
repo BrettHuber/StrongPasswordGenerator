@@ -1,4 +1,5 @@
 import random
+from random import randint
 
 if __name__ == "__main__":
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
     uppercaseLetterCount = 0;
     numberCount = 0;
 
-    
+    # Creates the strong password
     for x in range(passwordLength):
         if(x == 1):
             charNum = random.randrange(0, len(capitalLetters))
@@ -45,7 +46,18 @@ if __name__ == "__main__":
             lowercaseLetterCount += 1
             strongPassword += letters[charNum] 
 
-    print("Strong password: " + strongPassword)
+    # Shuffles the produced password 
+    strLength = len(strongPassword) 
+    list = list(strongPassword)
+    for i in range(0,strLength - 1):  
+        position = randint(i + 1, strLength - 1) 
+        list[position], list[i] = list[i], list[position]  
+    finalPassword = ""
+    for i in range(strLength):
+        res = res + list[i] 
+
+    print("Strong password: " + finalPassword)
+
 
 
 
